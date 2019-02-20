@@ -21,14 +21,20 @@ class App extends Component {
           .then(data => this.setState({people: data.results}));
       }
 
+      onSearchChange = (event) => {
+          this.setState({ searchfield: event.target.value });
+      }
+
 render() {
     const { people, searchfield } = this.state;
-
+    const filteredPeople = people.filter(people => {
+        return people.name.toLowerCase().includes(searchfield.toLowerCase());
+    })
     return (
         <div className='tc'>
             <h1 className='f1'>Star Wars API</h1>
             <SearchBar searchChange={this.onSearchChange}/>
-            <CardList people={people} />
+            <CardList people={filteredPeople} />
         </div>
 
     ); 
