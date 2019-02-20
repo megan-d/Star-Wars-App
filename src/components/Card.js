@@ -1,15 +1,15 @@
 import React from 'react';
 
-const Card = ({name, height, birthYear, gender}) => {   //destructuring in brackets
+//receive and destructure props
+const Card = ({name, height, birthYear, gender}) => {   
     
      
         return (
-            <div className="tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5">
+            <div className="card tc bg-light-red dib br3 pa3 ma2 grow shadow-5">
                 <div>
                     <h2>{name}</h2>
-                    <p>Height: {height} cm}</p>
-                    <p>Height: {birthYear} cm}</p>
-                    <p>Height: {gender} cm}</p>
+                    <p><span  className='card-labels'>Height: </span>{height} cm</p>
+                    <p><span  className='card-labels'>Birth Year: </span>{birthYear}</p>
                 </div>
             </div>
         );
