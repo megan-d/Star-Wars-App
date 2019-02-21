@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Navigation from '../components/Navigation/Navigation';
 import SearchBar from '../components/SearchBar';
 import CardList from '../components/CardList';
 import './App.css';
@@ -30,9 +31,11 @@ render() {
     const filteredPeople = people.filter(people => {
         return people.name.toLowerCase().includes(searchfield.toLowerCase());
     })
-    return (
+        return people.length === 0 ? <h1>Loading</h1> : 
+        (
         <div className='tc'>
             <h1 className='f1'>Star Wars API</h1>
+            <Navigation />
             <SearchBar searchChange={this.onSearchChange}/>
             <CardList people={filteredPeople} />
         </div>

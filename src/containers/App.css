@@ -17,4 +17,17 @@
         font-weight: 700;
     }
 
+.card {
+    display: flex;
+    width: 30%;
+    min-width: 200px;
+    max-width: 400px;
+}
 
+.nav-links {
+    text-decoration: none;
+    background: lightseagreen;
+    border: 2px yellow solid;
+    margin: 1rem;
+    border-radius: 5px;
+}
