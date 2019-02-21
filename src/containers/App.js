@@ -12,18 +12,25 @@ class App extends Component {
           super()
           this.state = {
               people: [],
-              searchfield: ''
+              planets: [],
+              searchfield: '',
+              route: 'home'
           };
       }
 
-      componentDidMount() {
-          fetch('https://swapi.co/api/people')
+      onNavClick = (param => {
+          fetch(`https://swapi.co/api/${param}`)
           .then(response => response.json())
-          .then(data => this.setState({people: data.results}));
-      }
+          .then(console.log)
+        //   .then(data => this.setState({${param}: data.results}));
+      })
 
       onSearchChange = (event) => {
           this.setState({ searchfield: event.target.value });
+      }
+
+      onRouteChange = (route) => {
+        this.setState({route: route});
       }
 
 render() {
@@ -31,15 +38,13 @@ render() {
     const filteredPeople = people.filter(people => {
         return people.name.toLowerCase().includes(searchfield.toLowerCase());
     })
-        return people.length === 0 ? <h1>Loading</h1> : 
-        (
+        return (
         <div className='tc'>
             <h1 className='f1'>Star Wars API</h1>
-            <Navigation />
+            <Navigation onNavClick={this.onNavClick}/>
             <SearchBar searchChange={this.onSearchChange}/>
             <CardList people={filteredPeople} />
         </div>
-
     ); 
 
 }
