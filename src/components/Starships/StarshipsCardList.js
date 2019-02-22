@@ -1,18 +1,18 @@
 import React from 'react';
-import PlanetsCard from './PlanetsCard';
+import StarshipsCard from './StarshipsCard';
 
 const PlanetsCardList = ({ object }) => {
     
     return (
         <div>
             {
-                object.map((person, i) => {
+                object.map((ship, i) => {
                     return (
-                        <PlanetsCard 
+                        <StarshipsCard 
                             key={i}
                             name={object[i].name}
-                            terrain={object[i].terrain}
-                            population={object[i].population}
+                            model={object[i].model}
+                            crew={object[i].crew}
                             />
                     );
                 })

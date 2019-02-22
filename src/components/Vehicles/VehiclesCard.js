@@ -1,15 +1,15 @@
 import React from 'react';
 
 //receive and destructure props
-const PlanetsCard = ({name, terrain, population}) => {   
+const VehiclesCard = ({name, model, passengers}) => {   
     
      
         return (
             <div className="card tc bg-light-red dib br3 pa3 ma2 grow shadow-5">
                 <div>
                     <h2>{name}</h2>
-                    <p><span  className='card-labels'>Terrain: </span>{terrain}</p>
-                    <p><span  className='card-labels'>Population: </span>{population}</p>
+                    <p><span  className='card-labels'>Model: </span>{model}</p>
+                    <p><span  className='card-labels'>Passengers: </span>{passengers}</p>
                 </div>
             </div>
         );
@@ -17,4 +17,4 @@ const PlanetsCard = ({name, terrain, population}) => {
 
 
 
-export default PlanetsCard;
+export default VehiclesCard;
