@@ -11,8 +11,7 @@ class App extends Component {
       constructor() {
           super()
           this.state = {
-              people: [],
-              planets: [],
+              object: [],
               searchfield: '',
               route: 'home'
           };
@@ -22,7 +21,7 @@ class App extends Component {
         fetch(`https://swapi.co/api/${param}`)
           .then(response => response.json())
         //currently hard coded for people array, but need to make dynamic for any navigation button clicked. currently planets also shows same page.
-          .then(data => this.setState({people: data.results}));
+          .then(data => this.setState({object: data.results}));
       }
 
       onSearchChange = (event) => {
@@ -34,16 +33,16 @@ class App extends Component {
     //   }
 
 render() {
-    const { people, searchfield } = this.state;
-    const filteredPeople = people.filter(people => {
-        return people.name.toLowerCase().includes(searchfield.toLowerCase());
+    const { object, searchfield } = this.state;
+    const filteredObject = object.filter(object => {
+        return object.name.toLowerCase().includes(searchfield.toLowerCase());
     })
         return (
         <div className='tc'>
             <h1 className='f1'>Star Wars API</h1>
             <Navigation onNavClick={this.onNavClick}/>
             <SearchBar searchChange={this.onSearchChange}/>
-            <PeopleCardList people={filteredPeople} onNavClick={this.onNavClick} />
+            <PeopleCardList object={filteredObject} onNavClick={this.onNavClick} />
         </div>
     ); 
 

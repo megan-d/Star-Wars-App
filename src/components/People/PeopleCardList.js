@@ -1,18 +1,18 @@
 import React from 'react';
 import PeopleCard from './PeopleCard';
 
-const PeopleCardList = ({ people }) => {
+const PeopleCardList = ({ object }) => {
     
     return (
         <div>
             {
-                people.map((person, i) => {
+                object.map((person, i) => {
                     return (
                         <PeopleCard 
                             key={i}
-                            name={people[i].name}
-                            height={people[i].height}
-                            birthYear={people[i].birth_year}
+                            name={object[i].name}
+                            height={object[i].height}
+                            birthYear={object[i].birth_year}
                             />
                     );
                 })
