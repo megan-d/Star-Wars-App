@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Navigation from '../components/Navigation/Navigation';
 import SearchBar from '../components/SearchBar';
-import CardList from '../components/CardList';
+import PeopleCardList from '../components/People/PeopleCardList';
 import './App.css';
 
 //create App componenent that will be the overall app and will contain all the other components
@@ -18,20 +18,20 @@ class App extends Component {
           };
       }
 
-      onNavClick = (param => {
-          fetch(`https://swapi.co/api/${param}`)
+      onNavClick = (param) => {
+        fetch(`https://swapi.co/api/${param}`)
           .then(response => response.json())
-          .then(console.log)
-        //   .then(data => this.setState({${param}: data.results}));
-      })
+        //currently hard coded for people array, but need to make dynamic for any navigation button clicked. currently planets also shows same page.
+          .then(data => this.setState({people: data.results}));
+      }
 
       onSearchChange = (event) => {
           this.setState({ searchfield: event.target.value });
       }
 
-      onRouteChange = (route) => {
-        this.setState({route: route});
-      }
+    //   onRouteChange = (route) => {
+    //     this.setState({route: route});
+    //   }
 
 render() {
     const { people, searchfield } = this.state;
@@ -43,7 +43,7 @@ render() {
             <h1 className='f1'>Star Wars API</h1>
             <Navigation onNavClick={this.onNavClick}/>
             <SearchBar searchChange={this.onSearchChange}/>
-            <CardList people={filteredPeople} />
+            <PeopleCardList people={filteredPeople} onNavClick={this.onNavClick} />
         </div>
     ); 
 

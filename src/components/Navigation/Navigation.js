@@ -6,7 +6,7 @@ const Navigation = ( {onNavClick} ) => {
         //navigation for home screen
         <nav style={{display: 'flex', justifyContent: 'center'}}>
             <p onClick={() => onNavClick('people')} className='nav-links pa3 pointer'>People</p>
-            <p className='nav-links pa3 pointer'>Planets</p>
+            <p onClick={() => onNavClick('planets')}className='nav-links pa3 pointer'>Planets</p>
             <p className='nav-links pa3 pointer'>Films</p>
             <p className='nav-links pa3 pointer'>Species</p>
             <p className='nav-links pa3 pointer'>Vehicles</p>

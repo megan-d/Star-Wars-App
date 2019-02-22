@@ -1,14 +1,14 @@
 import React from 'react';
-import Card from './Card';
+import PeopleCard from './PeopleCard';
 
-const CardList = ({ people }) => {
+const PeopleCardList = ({ people }) => {
     
     return (
         <div>
             {
                 people.map((person, i) => {
                     return (
-                        <Card 
+                        <PeopleCard 
                             key={i}
                             name={people[i].name}
                             height={people[i].height}
@@ -22,4 +22,4 @@ const CardList = ({ people }) => {
     );
 }
 
-export default CardList;
+export default PeopleCardList;

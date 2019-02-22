@@ -1,7 +1,7 @@
 import React from 'react';
 
 //receive and destructure props
-const Card = ({name, height, birthYear, gender}) => {   
+const PeopleCard = ({name, height, birthYear}) => {   
     
      
         return (
@@ -17,4 +17,4 @@ const Card = ({name, height, birthYear, gender}) => {
 
 
 
-export default Card;
+export default PeopleCard;
