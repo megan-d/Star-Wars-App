@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Navigation from '../components/Navigation/Navigation';
 import SearchBar from '../components/SearchBar';
+import Scroll from '../components/Scroll';
 import PeopleCardList from '../components/People/PeopleCardList';
 import PlanetsCardList from '../components/Planets/PlanetsCardList';
 import VehiclesCardList from '../components/Vehicles/VehiclesCardList';
@@ -54,21 +55,32 @@ render() {
         return (
             <div className='tc'>
                 <h1 className='f1'>Star Wars API</h1>
-                <Navigation onNavClick={this.onNavClick} getData={this.getData}/>
+                <p id='subtitle'>Select a category below to learn more...</p>
+                <Navigation getData={this.getData}/>
                 <SearchBar searchChange={this.onSearchChange}/>
     
                 {/* If the route is people, display PeopleCardList. If the route is planets, display PlanetsCardList, etc. */}
                 
                 { this.state.route === 'people' ? 
-                <PeopleCardList object={filteredObject} getData={this.getData} />
+                <Scroll>
+                    <PeopleCardList object={filteredObject} getData={this.getData} />
+                </Scroll>
                 : 
                 this.state.route === 'planets' ?
-                <PlanetsCardList object={filteredObject} getData={this.getData} />
+                <Scroll>
+                    <PlanetsCardList object={filteredObject} getData={this.getData} />
+                </Scroll>
+                
                 : 
                 this.state.route === 'vehicles' ?
-                <VehiclesCardList object={filteredObject} getData={this.getData} />
+                <Scroll>
+                    <VehiclesCardList object={filteredObject} getData={this.getData} />
+                </Scroll>
                 : 
-                <StarshipsCardList object={filteredObject} getData={this.getData} />
+                <Scroll>
+                    <StarshipsCardList object={filteredObject} getData={this.getData} />
+                </Scroll>
+                
                 }
             </div>
         ); 

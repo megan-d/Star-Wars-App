@@ -7,14 +7,25 @@
     src: local('SEGA LOGO FONT'), url('SEGA.woff') format('woff');
     }
 
-    h1 {
-        font-family: 'SEGA LOGO FONT';
-        font-weight: 200;
-        color: yellow;
+h1 {
+    font-family: 'SEGA LOGO FONT';
+    font-weight: 200;
+    color: yellow;
     }
 
-    .card-labels {
-        font-weight: 700;
+#subtitle {
+    color: yellow;
+    font-weight: 700;
+    font-size: 2rem;
+    /* text-shadow:
+		-1px -1px 0 yellow,
+		1px -1px 0 yellow,
+		-1px 1px 0 yellow,
+		1px 1px 0 yellow; */
+}
+
+.card-labels {
+    font-weight: 700;
     }
 
 .card {
@@ -31,4 +42,7 @@
     border: 2px yellow solid;
     margin: 1rem;
     border-radius: 5px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
 }
