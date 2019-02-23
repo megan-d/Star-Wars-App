@@ -25,7 +25,8 @@ class App extends Component {
         fetch(`https://swapi.co/api/${param}`)  
         .then(response => response.json())
         //currently hard coded for people array, but need to make dynamic for any navigation button clicked. currently planets also shows same page.
-        .then(data => this.setState({object: data.results, route: param}));
+        .then(data => this.setState({object: data.results, route: param}))
+        .catch(error => console.log(error));
       }
 
       componentDidMount =() => {
