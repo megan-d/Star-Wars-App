@@ -22,11 +22,17 @@ class App extends Component {
 
       onNavClick = (param) => {
         this.setState({ route: param});
+      }
+
+      getData = (param) => {
         fetch(`https://swapi.co/api/${param}`)  
-            .then(response => response.json())
-            //currently hard coded for people array, but need to make dynamic for any navigation button clicked. currently planets also shows same page.
-            .then(data => this.setState({object: data.results}));
-          
+        .then(response => response.json())
+        //currently hard coded for people array, but need to make dynamic for any navigation button clicked. currently planets also shows same page.
+        .then(data => this.setState({object: data.results}));
+      }
+
+      componentDidMount =() => {
+          this.setState({ object: []});
       }
 
       onSearchChange = (event) => {
@@ -43,30 +49,36 @@ render() {
         return object.name.toLowerCase().includes(searchfield.toLowerCase());
     })
 
-    return (
-        <div className='tc'>
-            <h1 className='f1'>Star Wars API</h1>
-            <Navigation onNavClick={this.onNavClick}/>
-            <SearchBar searchChange={this.onSearchChange}/>
+    // if (object.length === 0 && this.route !== '') {
+    //     return <h1>Loading...</h1>
 
-            {/* If the route is people, display PeopleCardList. If the route is planets, display PlanetsCardList, etc. */}
-            
-            { this.state.route === 'people' ? 
-            <PeopleCardList object={filteredObject} onNavClick={this.onNavClick} />
-            : 
-            this.state.route === 'planets' ?
-            <PlanetsCardList object={filteredObject} onNavClick={this.onNavClick} />
-            : 
-            this.state.route === 'vehicles' ?
-            <VehiclesCardList object={filteredObject} onNavClick={this.onNavClick} />
-            : 
-            <StarshipsCardList object={filteredObject} onNavClick={this.onNavClick} />
-            }
-        </div>
-    ); 
+    // } else {
+        return (
+            <div className='tc'>
+                <h1 className='f1'>Star Wars API</h1>
+                <Navigation onNavClick={this.onNavClick} getData={this.getData}/>
+                <SearchBar searchChange={this.onSearchChange}/>
+    
+                {/* If the route is people, display PeopleCardList. If the route is planets, display PlanetsCardList, etc. */}
+                
+                { this.state.route === 'people' ? 
+                <PeopleCardList object={filteredObject} onNavClick={this.onNavClick} getData={this.getData}/>
+                : 
+                this.state.route === 'planets' ?
+                <PlanetsCardList object={filteredObject} onNavClick={this.onNavClick} getData={this.getData}/>
+                : 
+                this.state.route === 'vehicles' ?
+                <VehiclesCardList object={filteredObject} onNavClick={this.onNavClick} getData={this.getData}/>
+                : 
+                <StarshipsCardList object={filteredObject} onNavClick={this.onNavClick} getData={this.getData}/>
+                }
+            </div>
+        ); 
+    }
+    
     }
         
-}
+
 
 
     
