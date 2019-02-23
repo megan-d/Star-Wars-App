@@ -17,18 +17,15 @@ class App extends Component {
               object: [],
               searchfield: '',
               route: ''
+            //   isLoading: true
           };
-      }
-
-      onNavClick = (param) => {
-        this.setState({ route: param});
       }
 
       getData = (param) => {
         fetch(`https://swapi.co/api/${param}`)  
         .then(response => response.json())
         //currently hard coded for people array, but need to make dynamic for any navigation button clicked. currently planets also shows same page.
-        .then(data => this.setState({object: data.results}));
+        .then(data => this.setState({object: data.results, route: param}));
       }
 
       componentDidMount =() => {
@@ -62,15 +59,15 @@ render() {
                 {/* If the route is people, display PeopleCardList. If the route is planets, display PlanetsCardList, etc. */}
                 
                 { this.state.route === 'people' ? 
-                <PeopleCardList object={filteredObject} onNavClick={this.onNavClick} getData={this.getData}/>
+                <PeopleCardList object={filteredObject} getData={this.getData} />
                 : 
                 this.state.route === 'planets' ?
-                <PlanetsCardList object={filteredObject} onNavClick={this.onNavClick} getData={this.getData}/>
+                <PlanetsCardList object={filteredObject} getData={this.getData} />
                 : 
                 this.state.route === 'vehicles' ?
-                <VehiclesCardList object={filteredObject} onNavClick={this.onNavClick} getData={this.getData}/>
+                <VehiclesCardList object={filteredObject} getData={this.getData} />
                 : 
-                <StarshipsCardList object={filteredObject} onNavClick={this.onNavClick} getData={this.getData}/>
+                <StarshipsCardList object={filteredObject} getData={this.getData} />
                 }
             </div>
         ); 

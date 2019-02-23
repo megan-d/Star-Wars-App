@@ -4,7 +4,7 @@ const SearchBar = ({ searchfield, searchChange}) => {
     return (
         <div className='pa2'>
             <input 
-                className='pa3 ba b--yellow bg-lightest-blue'
+                className='pa3 ba b--blue bg-lightest-blue'
                 type='search'
                 placeholder='Search Star Wars...'
                 onChange = {searchChange}
